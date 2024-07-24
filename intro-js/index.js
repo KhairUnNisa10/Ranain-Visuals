@@ -1,60 +1,72 @@
 (function ($) {
   $(function () {
-    var $scrollSection = $("#scroll");
-    var agTimeline = $(".js-timeline");
-    var agTimelineLine = $(".timeline_line");
-    var agTimelineLineProgress = $(".timeline_line_progress");
-    var agTimelineItem = $(".timeline_item");
-    var agTimelinePoint = $(".js-timeline-card_point-box");
-
-    // IntersectionObserver setup
-    var observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            $(entry.target).addClass("js-ag-active");
-          } else {
-            $(entry.target).removeClass("js-ag-active");
-          }
-        });
-
-        // Update the progress line
-        var activeItems = agTimelineItem.filter(".js-ag-active");
-        if (activeItems.length > 0) {
-          var firstActiveItem = activeItems.first();
-          var lastActiveItem = activeItems.last();
-          var progressStart =
-            firstActiveItem.find(agTimelinePoint).offset().top -
-            agTimeline.offset().top;
-          var progressEnd =
-            lastActiveItem.find(agTimelinePoint).offset().top -
-            agTimeline.offset().top;
-          agTimelineLineProgress.css({
-            top: progressStart + "px",
-            height: progressEnd - progressStart + "px",
-          });
-        }
-      },
-      {
-        root: null, // This makes the root the viewport
-        threshold: 0.1, // Adjust this value to determine when the items are considered in view
-      }
-    );
-
-    // Observe each timeline item
-    agTimelineItem.each(function () {
-      observer.observe(this);
+    $(window).on("scroll", function () {
+      fnOnScroll();
+    });
+    $(window).on("resize", function () {
+      fnOnResize();
     });
 
-    // Initial position of the timeline line
-    agTimelineLine.css({
-      top:
-        agTimelineItem.first().find(agTimelinePoint).offset().top -
-        agTimelineItem.first().offset().top,
-      bottom:
-        agTimeline.offset().top +
-        agTimeline.outerHeight() -
-        agTimelineItem.last().find(agTimelinePoint).offset().top,
-    });
+    var agTimeline = $(".js-timeline"),
+      agTimelineLine = $(".timeline_line"),
+      agTimelineLineProgress = $(".timeline_line_progress"),
+      agTimelinePoint = $(".js-timeline-card_point-box"),
+      agTimelineItem = $(".timeline_item"),
+      agOuterHeight = $(window).outerHeight(),
+      agHeight = $(window).height(),
+      f = -1,
+      agFlag = false;
+
+    function fnOnScroll() {
+      agPosY = $(window).scrollTop();
+
+      fnUpdateFrame();
+    }
+
+    function fnOnResize() {
+      agPosY = $(window).scrollTop();
+      agHeight = $(window).height();
+
+      fnUpdateFrame();
+    }
+
+    function fnUpdateWindow() {
+      agFlag = false;
+
+      agTimelineLine.css({
+        top:
+          agTimelineItem.first().find(agTimelinePoint).offset().top -
+          agTimelineItem.first().offset().top,
+        bottom:
+          agTimeline.offset().top +
+          agTimeline.outerHeight() -
+          agTimelineItem.last().find(agTimelinePoint).offset().top,
+      });
+      f !== agPosY && ((f = agPosY), agHeight, fnUpdateProgress());
+    }
+
+    function fnUpdateProgress() {
+      var agTop = agTimelineItem.last().find(agTimelinePoint).offset().top;
+
+      i = agTop + agPosY - $(window).scrollTop();
+      a = agTimelineLineProgress.offset().top + agPosY - $(window).scrollTop();
+      n = agPosY + agOuterHeight / 2.5;
+      i <= agPosY + agOuterHeight / 2.5 && (n = i - a);
+      agTimelineLineProgress.css({
+        height: n + "px",
+      });
+
+      agTimelineItem.each(function () {
+        var agTop = $(this).find(agTimelinePoint).offset().top;
+        agTop + agPosY - $(window).scrollTop() < agPosY + 0.5 * agOuterHeight
+          ? $(this).addClass("js-ag-active")
+          : $(this).removeClass("js-ag-active");
+      });
+    }
+
+    function fnUpdateFrame() {
+      agFlag || requestAnimationFrame(fnUpdateWindow);
+      agFlag = true;
+    }
   });
 })(jQuery);
