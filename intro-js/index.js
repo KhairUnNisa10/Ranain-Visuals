@@ -1,72 +1,89 @@
 (function ($) {
   $(function () {
-    $(window).on("scroll", function () {
-      fnOnScroll();
-    });
-    $(window).on("resize", function () {
-      fnOnResize();
-    });
+    // Cache selectors
+    var $window = $(window),
+      $agTimeline = $(".js-timeline"),
+      $agTimelineLine = $(".timeline_line"),
+      $agTimelineLineProgress = $(".timeline_line_progress"),
+      $agTimelinePoint = $(".js-timeline-card_point-box"),
+      $agTimelineItem = $(".timeline_item"),
+      agOuterHeight = $window.outerHeight(),
+      agHeight = $window.height(),
+      lastScrollY = -1,
+      isUpdating = false;
 
-    var agTimeline = $(".js-timeline"),
-      agTimelineLine = $(".timeline_line"),
-      agTimelineLineProgress = $(".timeline_line_progress"),
-      agTimelinePoint = $(".js-timeline-card_point-box"),
-      agTimelineItem = $(".timeline_item"),
-      agOuterHeight = $(window).outerHeight(),
-      agHeight = $(window).height(),
-      f = -1,
-      agFlag = false;
+    // Attach event listeners
+    $window.on("scroll", onScroll);
+    $window.on("resize", onResize);
 
-    function fnOnScroll() {
-      agPosY = $(window).scrollTop();
-
-      fnUpdateFrame();
+    function onScroll() {
+      updateFrame();
     }
 
-    function fnOnResize() {
-      agPosY = $(window).scrollTop();
-      agHeight = $(window).height();
-
-      fnUpdateFrame();
+    function onResize() {
+      agHeight = $window.height();
+      updateFrame();
     }
 
-    function fnUpdateWindow() {
-      agFlag = false;
+    function updateWindow() {
+      isUpdating = false;
 
-      agTimelineLine.css({
+      // Update the position of the timeline line
+      $agTimelineLine.css({
         top:
-          agTimelineItem.first().find(agTimelinePoint).offset().top -
-          agTimelineItem.first().offset().top,
+          $agTimelineItem.first().find($agTimelinePoint).offset().top -
+          $agTimelineItem.first().offset().top,
         bottom:
-          agTimeline.offset().top +
-          agTimeline.outerHeight() -
-          agTimelineItem.last().find(agTimelinePoint).offset().top,
-      });
-      f !== agPosY && ((f = agPosY), agHeight, fnUpdateProgress());
-    }
-
-    function fnUpdateProgress() {
-      var agTop = agTimelineItem.last().find(agTimelinePoint).offset().top;
-
-      i = agTop + agPosY - $(window).scrollTop();
-      a = agTimelineLineProgress.offset().top + agPosY - $(window).scrollTop();
-      n = agPosY + agOuterHeight / 2.5;
-      i <= agPosY + agOuterHeight / 2.5 && (n = i - a);
-      agTimelineLineProgress.css({
-        height: n + "px",
+          $agTimeline.offset().top +
+          $agTimeline.outerHeight() -
+          $agTimelineItem.last().find($agTimelinePoint).offset().top,
       });
 
-      agTimelineItem.each(function () {
-        var agTop = $(this).find(agTimelinePoint).offset().top;
-        agTop + agPosY - $(window).scrollTop() < agPosY + 0.5 * agOuterHeight
-          ? $(this).addClass("js-ag-active")
-          : $(this).removeClass("js-ag-active");
+      if (lastScrollY !== $window.scrollTop()) {
+        lastScrollY = $window.scrollTop();
+        updateProgress();
+      }
+    }
+
+    function updateProgress() {
+      var lastItemTop = $agTimelineItem
+          .last()
+          .find($agTimelinePoint)
+          .offset().top,
+        currentScrollY = $window.scrollTop(),
+        progressTop =
+          $agTimelineLineProgress.offset().top +
+          currentScrollY -
+          currentScrollY,
+        middleOfWindow = currentScrollY + agOuterHeight / 2.5;
+
+      var progressHeight = Math.min(
+        middleOfWindow - progressTop,
+        lastItemTop - progressTop
+      );
+      $agTimelineLineProgress.css({
+        height: progressHeight + "px",
+      });
+
+      // Toggle active class based on scroll position
+      $agTimelineItem.each(function () {
+        var itemTop = $(this).find($agTimelinePoint).offset().top;
+        if (itemTop + currentScrollY - currentScrollY < middleOfWindow) {
+          $(this).addClass("js-ag-active");
+        } else {
+          $(this).removeClass("js-ag-active");
+        }
       });
     }
 
-    function fnUpdateFrame() {
-      agFlag || requestAnimationFrame(fnUpdateWindow);
-      agFlag = true;
+    function updateFrame() {
+      if (!isUpdating) {
+        requestAnimationFrame(updateWindow);
+        isUpdating = true;
+      }
     }
+
+    // Initial update
+    updateFrame();
   });
 })(jQuery);
