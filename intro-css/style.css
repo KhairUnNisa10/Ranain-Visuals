@@ -4904,7 +4904,6 @@ h2.section-subheading.light span:before {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    overflow: auto;
 /*    overflow: hidden;*/
 }
 
