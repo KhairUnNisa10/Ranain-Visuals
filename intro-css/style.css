@@ -296,6 +296,13 @@ section.section-parallax {
   padding-left: 0px;
 }
 
+@media only screen and (max-width: 768px){
+  #three-step-method .container{
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
 .text-box {
   margin-top: 8vh;
   display: flex;
@@ -424,6 +431,10 @@ h2.section-heading.section-heading-small {
   h2.section-heading.section-heading-small {
     font-size: 35px;
     margin: -6px auto -4px auto;
+  }
+
+  h3.section-heading-vsmall{
+    font-size: 25px;
   }
 }
 
@@ -764,7 +775,7 @@ h2.section-subheading.light span:before {
 
 @media only screen and (max-width: 768px) {
   .parallax {
-    padding: 100px 15px;
+    padding: 100px 0px;
   } 
 }
 
@@ -778,21 +789,21 @@ h2.section-subheading.light span:before {
   -o-background-size: cover;
   background-size: cover;
 /*  border: 100px solid #151515;*/
-  border-radius: 20px;
+/*  border-radius: 20px;*/
   z-index: 1;
 }
 
-@media only screen and (max-width: 1200px) {
+/*@media only screen and (max-width: 1200px) {
   .parallax-purchase {
     border: 30px solid #000;
   } 
-}
+}*/
 
-@media only screen and (max-width: 768px) {
+/*@media only screen and (max-width: 768px) {
   .parallax-purchase {
     border: 15px solid #000;
   }
-}
+}*/
 
 
 /* 15. link underline */
@@ -2541,6 +2552,16 @@ h2.section-subheading.light span:before {
   border-right: 1px solid rgba(119, 119, 119, .2);
 }
 
+.vertical-effect:nth-child(2){
+  visibility: hidden;
+  display: none;
+}
+
+.vertical-effect:last-child{
+  right: 0%;
+  width: 50%;
+}
+
 .vertical-effect::before {
   content: "";
   position: absolute;
@@ -2974,12 +2995,36 @@ h2.section-subheading.light span:before {
   background-color: #000;
   width: auto;
   display: inline;
-  padding: 5px;
-  border-radius: 20px;
-  font-size: 12px;
+  padding: 5px 20px;
+  border-radius: 8px;
+  font-size: 14px;
   position: absolute;
-  top: 47px;
-  right: 40px;
+  top: -8px;
+  right: 30px;
+  transform: rotate(-12deg);
+}
+
+@media only screen and (max-width: 991px){
+  #pricing .pricing-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pricing-box{
+    width: 385px;
+    margin-bottom: 40px;
+  }
+}
+
+@media only screen and (max-width: 400px){
+  .pricing-box{
+    width: 100% !important;
+  }
+  #pricing .pricing-container{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 
 /*
@@ -4808,6 +4853,37 @@ h2.section-subheading.light span:before {
     margin-bottom: 20px;
 }
 
+@media only screen and (max-width: 1000px){
+  #faq .container, #our-team .container{
+    flex-direction: column;
+  }
+
+  #faq .container .row, #what-we-do .container .row {
+    width: 100%;
+  }
+
+  #faq h2.section-heading, #faq span, #our-team h2.section-heading, #our-team span {
+    text-align: center !important;
+  }
+
+  /*#faq .faq-heading, #faq .section-heading-vsmall{
+    display: none;
+  }*/
+
+  #faq .section-heading-vsmall{
+    margin-bottom: 40px;
+  }
+
+  #faq .row:first-child{
+    margin-bottom: 120px;
+  }
+
+  .accordian {
+    max-width: 100%;
+  }
+}
+
+/*What We Do Section*/
 #what-we-do .container{
   display: flex;
 }
@@ -4893,6 +4969,39 @@ h2.section-subheading.light span:before {
   margin-top: 20px;
 }
 
+@media only screen and (max-width: 991px){
+  #what-we-do .container{
+    flex-direction: column;
+  }
+
+  #what-we-do .section-heading-small, #what-we-do .section-heading-vsmall, #what-we-do .col-lg-12 p {
+    text-align: center !important;
+  }
+
+  #what-we-do .row:last-child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #what-we-do .col-lg-12{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .what-cards-wrapper{
+    margin-top: 50px;
+    margin: 50px 100px 0;
+  }
+}
+
+@media only screen and (max-width: 650px){
+  .what-cards-wrapper{
+    margin-top: 50px;
+    margin: 50px 50px 0;
+  }
+}
+
 /*Our Process Section*/
 #scroll{
   text-align: left !important;
@@ -4900,7 +5009,7 @@ h2.section-subheading.light span:before {
 
 .main {
 /*    padding: 100px;*/
-/*    max-width: 1140px;*/
+/*    max-width: 1140px;*/ 
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -5046,6 +5155,8 @@ h2.section-subheading.light span:before {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 30px;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
 .our-team .row:before{
@@ -5165,16 +5276,106 @@ h2.section-subheading.light span:before {
   }
 }
 
-/*Footer section*/
-footer{
-  background-color: #000;
-  z-index: 9999;
+@media only screen and (max-width: 1000px){
+  #our-team .row:first-child{
+    margin-bottom: 40px;
+  }
 }
 
-footer .container .row{
+@media only screen and (max-width: 600px){
+  .our-team .row{
+    grid-template-columns: auto;
+  }
+}
+
+
+/*Footer section*/
+footer{
+/*  background-color: #000;*/
+  z-index: 9999;
+  padding: 100px 0;
+}
+
+footer form{
+  display: flex;
+  justify-content: center;
+}
+
+footer h2{
+  margin-top: 40px !important;
+  margin-bottom: 10px !important;
+}
+
+footer .copyrights-content{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 40px;
+}
+
+
+footer .copyrights a, .copyrights-mob a{
+  color: #db0018;
+}
+
+.copyrights-mob{
+  display: none;
+}
+
+.input-field{
+  background-color: #fff;
+  display: inline-block;
+  border-radius: 50px;
+  border: 3px solid #fff;
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.input-field input, .input-field-mob input{
+  font-size: 18px;
+  color: #5f5f5f;
+  border-radius: 50px;
+  padding: 15px 20px;
+
+}
+
+.input-field button, .input-field-mob button{
+  font-size: 18px;
+  border-radius: 50px;
+  background-color: #db0018;
+  padding: 15px 50px;
+  color: #fff;
+  transition: 0.5s;
+
+}
+
+.input-field button:hover, .input-field-mob button:hover{
+  background-color: #000;
+}
+
+
+.input-field input, .input-field button, .input-field-mob input, .input-field-mob button{
+  border: none;
+  outline: none;
+}
+
+.input-field-mob input, .input-field-mob button{
+  width: 100%;
+  text-align: center;
+}
+
+.input-field-mob input{
+  margin-bottom: 15px;
+}
+
+.input-field-mob{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  display: none;
 }
 
 .social-icons-footer{
@@ -5194,6 +5395,49 @@ footer .container .row{
 .social-icons-footer i:hover{
   color: #fff;
   background-color: #000;
+}
+
+.subscribe-msg {
+  display: block;
+  margin-top: 10px;
+  color: #db0018;
+  transition: 0.1s;
+}
+
+footer .clr-white{
+  color: #fff;
+}
+
+@media only screen and (max-width: 415px){
+  .input-field{
+    display: none;
+  }
+
+  .input-field-mob{
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 800px){
+  .input-field{
+    width: 100%;
+  }
+
+  footer{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media only screen and (max-width: 1000px){
+  .copyrights-content{
+    display: none !important;
+  }
+
+  .copyrights-mob{
+    display: block;
+    margin-top: 40px;
+  }
 }
 
 /*Hero Section*/
@@ -5235,7 +5479,7 @@ footer .container .row{
 
 @keyframes animated-text{
   from{width: 0;}
-  to{width: 38%;}
+  to{width: 900px;}
 }
 
 @keyframes animated-cursor{
@@ -5335,13 +5579,19 @@ footer .container .row{
 
 
 /*Reviews*/
-
 #reviews .container{
   margin-top: 100px;
 }
 
 .carousel {
   background: transparent;
+}
+
+#reviews .carousel-cell img{
+  height: 300px;
+  width: 600px;
+  object-fit: contain;
+  background: #1c1d1f;
 }
 
 .carousel-cell {
@@ -5352,6 +5602,30 @@ footer .container .row{
   border-radius: 5px;
 }
 
+@media only screen and (max-width: 600px){
+  #reviews .carousel-cell img{
+    height: 200px !important;
+    width: 100%;
+  }
+
+  .carousel-cell {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1000px){
+  #reviews .carousel-cell img{
+    height: 400px;
+    width: 100%;
+  }
+
+  .carousel-cell {
+    width: 80%;
+  }
+}
+
+
+/*CTA*/
 #cta-section{
   padding: 150px 0;
 }
@@ -5369,10 +5643,23 @@ footer .container .row{
   z-index: 99;
   border-radius: 20px;
   padding: 50px;
-  width: 30%;
+  width: 45%;
 /*  margin-top: 50px;*/
 }
 
 .cta-card .btn{
   bottom: 30%;
 }
+
+@media only screen and (max-width: 1460px) and (min-width: 1099px){
+  .cta-card{
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 1100px){
+  .cta-card{
+    width: 100%;
+  }
+}
+
