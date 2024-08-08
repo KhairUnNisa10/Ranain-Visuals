@@ -1,74 +1,8 @@
-/*
-  [CSS Index]
-  
-  ---
-  
-  Author:  ex-nihilo
-*/
-
-
-/*
-  1. TEMPLATE BACKGROUNDS
-    1.1. single IMG BACKGROUND
-    1.2. benefits IMG BACKGROUND
-    1.3. parallax IMG BACKGROUND
-  2. reset
-  3. layout
-  4. upper page
-  5. center container
-  6. section
-  7. heading
-  8. footer
-  9. hero container
-  10. to top arrow
-  11. intro years
-  12. facts counter
-  13. skills bar
-  14. parallax
-  15. link underline
-  16. three step method
-  17. fullwidth IMG
-  18. preloader
-  19. layout
-  20. preview
-  21. works hover
-  22. spacer
-  23. navigation
-  24. intro
-  25. overlay
-  26. the button
-  27. scroll indicator
-  28. the line
-  29. intro txt
-  30. the button LIGHT
-  31. Slick CUSTOM
-  32. divider
-  33. override
-  34. vertical lines
-  35. button more
-*/
-
-
 /* 1. TEMPLATE BACKGROUNDS */
 /* 1.1. single IMG BACKGROUND */
 .bg-img-SINGLE {
   background-image: url(../intro-images/img/background/SINGLE-bg.png);
 }
-
-/*
-@media only screen and (max-width: 995px) {
-  .bg-img-SINGLE {
-    background-image: url(../intro-images/img/background/SINGLE-bg-mobile.jpg);
-  }
-}
-*/
-
-
-/* 1.2. benefits IMG BACKGROUND */
-.img-fullwidth-benefits-carousel-1 {
-  background-image: url(../intro-images/img/benefits/benefits-carousel-1.jpg);
-}
-
 
 /* 1.3. parallax IMG BACKGROUND */
 .parallax-purchase {
@@ -77,6 +11,10 @@
 
 
 /* 2. reset */
+*:focus {  
+  outline: none;
+}
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -91,10 +29,6 @@ html, body {
   line-height: 170%;
 }
 
-body {
-/* line-height: 1; */
-}
-
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
   display: block;
 }
@@ -102,25 +36,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 ol, ul {
   list-style: none;
 }
-
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before, blockquote:after, q:before, q:after {
-  content: "";
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-*:focus {  
-  outline: none;
-}
-
 
 /* remove dotted outline from links,
 button and input element */
@@ -604,150 +519,6 @@ h2.section-subheading.light span:before {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
-
-/* 11. intro years */
-.intro-years {
-  position: relative;
-  width: auto;
-  height: auto;
-  margin: -150px auto 0 auto;
-}
-
-.intro-years h2,
-.intro-years h4 {
-  font-family: 'Montserrat', Arial, sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 11px;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.65em;
-  color: #000;
-}
-
-.intro-years h2 {
-  margin: 0 auto;
-}
-
-.intro-years h4 {
-  margin: -3px auto;
-}
-
-.intro-years h3 {
-  position: relative;
-  font-family: 'Montserrat', Arial, sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 155px;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #000;
-  width: 100%;
-  line-height: 100%;
-  margin: -20px auto;
-  z-index: 0;
-}
-
-
-/* 12. facts counter */
-.facts-counter-number {
-  font-family: 'Montserrat', Arial, sans-serif;
-  font-size: 35px;
-  font-weight: 700;
-  line-height: 100%;
-  text-align: center;
-  color: #fff;
-  margin: -4px auto;
-}
-
-
-/* 13. skills bar */
-.show-skillbar {
-  position: relative;
-  margin: 40px 0 0 0;
-  text-align: left;
-}
-
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  .show-skillbar {
-   padding: 0 30px 0 20px;
- }
-}
-
-.show-skillbar {
-  padding: 0 200px;
-}
-
-@media only screen and (max-width: 1200px) {
-  .show-skillbar {
-    padding: 0 30px;
-  } 
-}
-
-@media only screen and (max-width: 995px) {
-  .show-skillbar {
-   margin: 50px 0 0 0;
- }  
-}
-
-@media only screen and (max-width: 880px) {
-  .show-skillbar {
-    padding: 0 30px;
-  } 
-}
-
-@media only screen and (max-width: 768px) {
-  .show-skillbar {
-    padding: 0 15px;
-  }  
-}
-
-.skillbar {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 21px;
-  margin: 0 0 30px 0;
-  background: none;
-}
-
-.skillbar-title {
-  position: absolute;
-  width: auto;
-  height: 21px;
-  line-height: 21px;
-  top: -21px;
-  left: 0;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #5f5f5f;
-  padding: 0;
-  letter-spacing: 0.05em;
-}
-
-.skillbar-bar {
-  display: inline-block;
-  width: 0px;
-  height: 1px;
-  background: #ccc;
-  margin: 0 0 3px 0;
-}
-
-.skill-bar-percent {
-  position: absolute;
-  height: auto;
-  line-height: 1;
-  top: -21px;
-  right: 0;
-  color: #5f5f5f;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-}
-
-
 /* 14. parallax */
 .parallax-overlay {
   position: absolute;
@@ -788,23 +559,8 @@ h2.section-subheading.light span:before {
   -ms-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-/*  border: 100px solid #151515;*/
-/*  border-radius: 20px;*/
   z-index: 1;
 }
-
-/*@media only screen and (max-width: 1200px) {
-  .parallax-purchase {
-    border: 30px solid #000;
-  } 
-}*/
-
-/*@media only screen and (max-width: 768px) {
-  .parallax-purchase {
-    border: 15px solid #000;
-  }
-}*/
-
 
 /* 15. link underline */
 .link-underline {
@@ -1139,47 +895,11 @@ img {
 }
 
 .icon-works a {
-/*
-position: relative;
-display: inline-block;
-vertical-align: middle;
-text-decoration: none;
-width: 180px;
-height: 44px;
-line-height: 44px;
-margin: 0 auto 0 -10px;
-top: -23px!important;
-background: #fff;
-border: 1px solid #fff;
-color: #5f5f5f;
--webkit-transition: all 0.35s ease-out;
-   -moz-transition: all 0.35s ease-out;
-    -ms-transition: all 0.35s ease-out;
-	 -o-transition: all 0.35s ease-out;
-        transition: all 0.35s ease-out;
--webkit-border-radius: 3px;
-   -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-     -o-border-radius: 3px;
-        border-radius: 3px;
-*/
   -webkit-transition: all 0.35s ease-out;
   -moz-transition: all 0.35s ease-out;
   -ms-transition: all 0.35s ease-out;
   -o-transition: all 0.35s ease-out;
   transition: all 0.35s ease-out;
-}
-
-.icon-works a:hover {
-/*
-background: #fff;
-border: 1px solid #fff;
-color: #5f5f5f;
-*/
-}
-
-.icon-works a:hover:after {
-/* background: #fff; */
 }
 
 .image-works:hover .icon-works {
@@ -4866,10 +4586,6 @@ h2.section-subheading.light span:before {
     text-align: center !important;
   }
 
-  /*#faq .faq-heading, #faq .section-heading-vsmall{
-    display: none;
-  }*/
-
   #faq .section-heading-vsmall{
     margin-bottom: 40px;
   }
@@ -4930,7 +4646,6 @@ h2.section-subheading.light span:before {
 
 .what-card1{
   background-color: #fff;
-/*  top: 10%;*/
 }
 
 .what-card1 .section-heading-vsmall{
@@ -4940,7 +4655,6 @@ h2.section-subheading.light span:before {
 .what-card2{
   background-color: #db0018;
   transform: perspective(1200px) translateX(0px) translateY(0px) scale(1) rotate(13.546deg) rotateX(0deg) rotateY(0deg) skewX(0deg) skewY(0deg) translateZ(0px);
-/*  top: 20%;*/
 }
 
 .what-card2 p, .what-card3 p, .what-card4 p, .what-card5 p{
@@ -4950,19 +4664,16 @@ h2.section-subheading.light span:before {
 .what-card3{
   background-color: #000;
   transform: perspective(1200px) translateX(0px) translateY(0px) scale(1) rotate(-6.87117deg) rotateX(0deg) rotateY(0deg) skewX(0deg) skewY(0deg) translateZ(0px);
-/*  top: 30%;*/
 }
 
 .what-card4{
   background-color: #151515;
   transform: perspective(1200px) translateX(0px) translateY(0px) scale(1) rotate(7.16564deg) rotateX(0deg) rotateY(0deg) skewX(0deg) skewY(0deg) translateZ(0px);
-/*  top: 40%;*/
 }
 
 .what-card5{
   background-color: #5f5f5f;
   transform: perspective(1200px) translateX(0px) translateY(0px) scale(1) rotate(-7.16564deg) rotateX(0deg) rotateY(0deg) skewX(0deg) skewY(0deg) translateZ(0px);
-/*  top: 50%;*/
 }
 
 #about .intro-txt{
@@ -5663,3 +5374,6 @@ footer .clr-white{
   }
 }
 
+.portfolio-overlay-img img{
+  filter: brightness(0.5);
+}

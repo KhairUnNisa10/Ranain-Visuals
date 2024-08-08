@@ -1,3 +1,4 @@
+// Our Process Start
 (function ($) {
   $(function () {
     // Cache selectors
@@ -87,4 +88,4 @@
     updateFrame();
   });
 })(jQuery);
-  
+// Our Process End
